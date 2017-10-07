@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/assets/js/angularapps/app.js"></script>
+<script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+<script src="~/assets/js/angularapps/scripts/appServices.js"></script>
+<script src="~/assets/js/angularapps/scripts/appController.js"></script>
+
+
+<h2>Index</h2>
+
+<div class="container-fluid">
+    <div ng-app="ngBMIApp" ng-controller="ngBMIAppController" ng-init="init()">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Calculate BMI</div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Name
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control input-sm" ng-model="name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Height
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control input-sm" ng-model="height" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Weight
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control input-sm" ng-model="weight" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Unit
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control input-sm" ng-model="unit" >
+                                            <option value="0">Inches & Pounds</option>
+                                            <option value="1">Centimeters & KG</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-6">
+                                        <input class="btn btn-primary" type="button" value="Calculate" ng-click="calculate()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row" ng-show="bmivalue != null">
+                            <div class="col-sm-12 text-center">
+                                <em>Your BMI is: <span>{{bmivalue | number:2}}</span></em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <input type="button" value="View BMIs" class="btn btn-success" ng-click="showDiv = !showDiv" />
+            </div>
+        </div>
+        <div ng-show="showDiv">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Weight</th>
+                                        <th>Height</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="entry in tabledata">
+                                    <tr>
+                                        <td>{{entry.Name}}</td>
+                                        <td>{{entry.Weight}}</td>
+                                        <td>{{entry.Height}}</td>
+                                        <td>{{entry.Unit}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">Hello</div>
+        </div>
+    </div>
+</div>

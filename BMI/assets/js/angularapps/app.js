@@ -1,0 +1,1 @@
+﻿var ngBMIApp = angular.module("ngBMIApp", [])
