@@ -62,7 +62,7 @@ namespace BMI.Controllers
                 Height = model.Height,
                 Name = model.Name,
             };
-            if (string.Equals("Inches & Pound", model.Unit))
+            if ((Int32)UnitTypes.InchesAndPound == int.Parse(model.Unit))
             {
                 var weight = _bmi.Weight * .45;
                 var height = _bmi.Height * .0254;
